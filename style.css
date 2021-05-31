@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#search_and_card {
+  display: flex;
+  justify-content:center;
+}
+
+#myInput {
+  background-image: url('images/search.svg'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 400px;
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#search_result {
+  margin: 16 16 16 16;
+}
+
+
+#theList {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#theList li {
+  /* Remove default list styling */
+  list-style-type: none;
+
+}
+
+#theList li a {
+  margin: 0 0 12px 0;
+  background-color: #f6f6f6; /* Grey background color */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-radius: 22px;
+  display: inline-block;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
+  transition: 0.3s;
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  /* Make it into a block element to fill the whole list */
+}
+
+#theList li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+  border-radius: 22px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
