@@ -1,90 +1,425 @@
+:root {
+  --text-color-dark: rgb(64, 64, 64);
+  --primary-light-color: rgb(240, 247, 255);
+  --text-color-light: rgb(196, 196, 196);
+  --primary-color-dark: rgb(45, 156, 219);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--primary-light-color);
 }
+
+nav {
+  margin: 2em;
+  padding: 0 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-left: 32px;
+  margin-top: 16px;
+  float: left;
+  font-family: 'Arima Madurai', sans-serif;
+  color: var(--text-color-dark);
+}
+
+body {
+  max-width: 1440px;
+  height: 1440px;
+  margin: auto;
+}
+
+.container {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text-color-light);
+  opacity: 1; /* Firefox */
+}
+
+input:focus {
+      outline:none;
+    }
 
 #search_and_card {
-  display: flex;
-  justify-content:center;
+  float: right;
+  margin-top: 24px;
+  margin-right: 22px;
 }
 
-#myInput {
-  background-image: url('images/search.svg'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
+#search-input {
+  background-image: url('images/search.svg');
+  background-position: 24px 16px;
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 400px;
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+  height: 48px;
+  width: 360px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  border: 0px;
+  border-radius: 20px;
+  color: var(--text-color-dark);
+  font-size: 0.8em;
+  padding: 12px 56px 12px 56px;
+  margin-bottom: 12px;
+  background-color:white;
 }
 
 #search_result {
   margin: 16 16 16 16;
 }
 
-
-#theList {
-  /* Remove default list styling */
+#result-list {
   list-style-type: none;
+  visibility: hidden;
   padding: 0;
   margin: 0;
 }
 
-#theList li {
+#result-list li {
   /* Remove default list styling */
   list-style-type: none;
-
 }
 
-#theList li a {
-  margin: 0 0 12px 0;
-  background-color: #f6f6f6; /* Grey background color */
+#result-list li p {
+  margin-top: 12px;
+  background-color: white;
+  border-radius: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 24px;
-  padding-right: 24px;
-  border-radius: 22px;
+  padding-left: 16px;
+  padding-right: 16px;
   display: inline-block;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
-  transition: 0.3s;
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: black; /* Add a black text color */
-  /* Make it into a block element to fill the whole list */
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  font-size: 1em;
+  color: var(--text-color-dark);
 }
 
 #theList li a:hover:not(.header) {
-  background-color: #eee; /* Add a hover effect to all links, except for headers */
-  border-radius: 22px;
+  background-color: #F2F2F2;
+  border-radius: 16px;
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
+/* Food card section */
+
+#food-card {
+  visibility: hidden;
+  background-color: var (--primary-light-color);
+  border-radius: 20px 60px 20px 20px;
+  border: 6px solid white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  width: 360px;
+  height: 520px;
+  overflow: hidden;
+}
+
+.card-title-image-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.food-circle-image {
+  width: 100px;
+  height: 100px;
+  background: white;
+  margin-right: 20px;
+  margin-top: 16px;
+  object-fit: scale-down;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  margin-bottom: auto;
+}
+
+.card-titel-category {
+  display: inline-block;
+  height: 45px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.card-title {
+  margin-top: 8px;
+  margin-left: 22px;
+  font-size: 1.5em;
+  line-height: 1em;
+  font-family: 'Arima Madurai', sans-serif;
+  color: var(--text-color-dark);
+}
+
+.card-category {
+  margin-left: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  display: inline-block;
+  color: var(--text-color-light);
+}
+
+.card-macro-values-label {
+  margin-left: 22px;
+  line-height: 0.5em;
+  margin-top: 42px;
+}
+
+.card-label {
+  font-size: 1em;
+  font-family: 'Arima Madurai', sans-serif;
+  color: var(--text-color-light);
+}
+
+.card-macro {
+  width: 70px;
+  height: 80px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.card-macros-section {
+  margin-top: 12px;
+  margin-left: 18px;
+  margin-right: 18px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.macro-value {
+  font-size: 1.1em;
+  font-family: 'Roboto', sans-serif;
+  color: black;
   text-align: center;
-  font-family: arial;
+  margin-top: 8px;
 }
 
-.price {
-  color: grey;
-  font-size: 22px;
+.macro-name {
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  color: black;
 }
 
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
+.macro-unit {
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color-light);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.card-portion-section,
+.card-meal-section {
+  margin-left: 22px;
+  margin-top: 22px;
+  margin-right: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#card-portion-input {
+  height: 30px;
+  width: 60px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  border: 0px;
+  border-radius: 4px;
+  color: var(--text-color-dark);
+  background-color: white;
+  font-size: 0.8em;
+  text-align: center;
+  margin-left: 12px;
+}
+
+.dropdown-selection-button {
+  background-image: url('images/down_arrow.svg');
+  background-position: right 5% bottom 50%;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  height: 30px;
+  width: 160px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  border: 0px;
+  border-radius: 4px;
+  text-align: left;
+  padding-left: 10px;
+  color: var(--text-color-dark);
+  background-color: white;
+  font-size: 0.8em;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 12px;
+}
+
+#card-total-calories {
+  color: black;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.add-button {
+  width: 184px;
+  height: 30px;
   color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
+  border: 0px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  display: block;
+  margin: auto;
+  margin-top: 24px;
+  background-color: var(--primary-color-dark);
 }
 
-.card button:hover {
-  opacity: 0.7;
+.delete_button:active,
+.dropdown-selection-button:active,
+.add-button:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 16px 1px rgba(0, 0, 0, 0.24);
+}
+
+#portion-dropdown {
+  position: absolute;
+  width: 160px;
+  left: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+}
+
+.dropdown-selector {
+  position: relative;
+}
+
+#portion-dropdown {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0;
+}
+
+.portion-dropdown-item {
+  list-style-type: none;
+  background-color: white;
+  display: flex;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.portion-dropdown-item p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  cursor: pointer;
+  background-color: white;
+  color: var(--text-color-dark);
+  text-decoration: none;
+}
+
+.portion-dropdown-item  :hover {
+    background-color: #F2F2F2;
+}
+
+.blue-dot {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+}
+
+.card-meal-options {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: space-around;
+}
+
+.meal-option {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-left: 24px;
+  justify-content: space-around;
+}
+
+.meal-option p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: var(--text-color-dark);
+  cursor: pointer;
+}
+
+
+#lunch-blue-dot {
+  visibility: hidden;
+}
+
+
+#dinner-blue-dot {
+  visibility: hidden;
+}
+
+
+/* food list section */
+
+.food-item {
+  background-color: var (--primary-light-color);
+  border-radius: 7px 7px 7px 7px;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  width: 142px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 25px;
+}
+
+.food-list-item-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.food-list-item-weight {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  margin-bottom: 16px;
+  color: var(--text-color-light);
+}
+
+#food-item-image {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 74px;
+}
+
+.delete_button {
+  background-image: url('images/delete_icon.svg');
+  background-position: right 50% bottom 50%;
+  background-repeat: no-repeat;
+  width: 27px;
+  height: 27px;
+  background-color: white;
+  position: absolute;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  margin-left: 140px;
+  margin-bottom: 124px;
 }

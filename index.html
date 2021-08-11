@@ -3,23 +3,99 @@
   <head>
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v3.min.js"></script>
-     <link rel="stylesheet" href="./style.css">
-     <script src="script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+     <script type="module" src="script.js" defer></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@800&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <title>Daily Macros</title>
   </head>
   <body>
-    <h1>Daily Macros</h1>
-    <div id="search_and_card">
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for food..">
-      <div id='container'></div>
+    <div class="container">
+      <h1>Daily Macros</h1>
+      <div id="search_and_card">
+        <input type="text" id="search-input" placeholder="Search for food..">
+        <ul id="result-list"></ul>
 
-      <div class="card">
-        <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
-        <h1>Tailored Jeans</h1>
-        <p class="price">$19.99</p>
-        <p>Some text about the jeans..</p>
-        <p><button>Add to Cart</button></p>
+        <div id="food-card">
+          <div class="card-title-image-section">
+            <div class="card-titel-category">
+              <p id="card-food-name" class="card-title">Banana</p>
+              <p id="card-food-category" class="card-category">Generic foods</p>
+            </div>
+            <img id="card-food-image" class="food-circle-image" src="images/hamburger.png" alt="">
+          </div>
+
+          <p class="card-macro-values-label card-label">Nutritional Values in 100g</p>
+
+          <div class="card-macros-section">
+
+            <div class="card-macro">
+              <p id="calories-value" class="macro-value">89</p>
+              <p class="macro-name">Calories</p>
+              <p class="macro-unit">Kcal</p>
+            </div>
+
+            <div class="card-macro">
+              <p id="protein-value" class="macro-value">1</p>
+              <p class="macro-name">Protein</p>
+              <p class="macro-unit">g</p>
+            </div>
+
+            <div class="card-macro">
+              <p id="fats-value" class="macro-value">0</p>
+              <p class="macro-name">Fats</p>
+              <p class="macro-unit">g</p>
+            </div>
+
+
+            <div class="card-macro">
+              <p id="carbs-value" class="macro-value">60</p>
+              <p class="macro-name">Carbs</p>
+              <p class="macro-unit">g</p>
+            </div>
+          </div>
+
+          <div class="card-portion-section">
+              <p class="card-label">Portion</p>
+              <input type="number" min="1" max="10000" id="card-portion-input" >
+              <div class="dropdown-selector">
+                <button id="portion-selection-button" class="dropdown-selection-button" type="button" name="button">Slice (113g)</button>
+                <ul id="portion-dropdown" class="dropdown"></ul>
+              </div>
+          </div>
+
+          <div class="card-meal-section">
+                <p class="card-label">Meal</p>
+                <div class="card-meal-options">
+                  <div class="meal-option">
+                    <img id="breakfast-blue-dot" class="blue-dot" alt="#" src="images/blue_dot.svg">
+                    <p id="meal-breakfast">Breakfast</p>
+                  </div>
+                  <div class="meal-option">
+                    <img id="lunch-blue-dot" class="blue-dot" alt="#" src="images/blue_dot.svg">
+                    <p id="meal-lunch" >Lunch</p>
+                  </div>
+                  <div class="meal-option">
+                    <img id="dinner-blue-dot" class="blue-dot" alt="#" src="images/blue_dot.svg">
+                    <p id="meal-dinner">Dinner</p>
+                  </div>
+                </div>
+          </div>
+
+          <p id="card-total-calories">-</p>
+
+          <button id="add-food-button" class="add-button" type="button" name="button">Add</button>
+
+        </div>
       </div>
+    </div>
+    <div class="food-item">
+        <img id="food-item-image" class="food-circle-image" src="images/hamburger.png" alt="">
+        <p class="food-list-item-title">Beef Steak</p>
+        <p class="food-list-item-weight">50 grams</p>
+        <div class="delete_button">
     </div>
   </body>
 </html>
