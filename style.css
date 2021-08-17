@@ -12,32 +12,26 @@
   background-color: var(--primary-light-color);
 }
 
-nav {
-  margin: 2em;
-  padding: 0 1.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 h1 {
   font-size: 2.5em;
   margin-left: 32px;
   margin-top: 16px;
-  float: left;
   font-family: 'Arima Madurai', sans-serif;
   color: var(--text-color-dark);
 }
 
 body {
   max-width: 1440px;
-  height: 1440px;
+  height: 1024px;
   margin: auto;
 }
 
 .container {
   width:100%;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
+  position: relative;
   justify-content: space-between;
 }
 
@@ -87,6 +81,7 @@ input:focus {
 #result-list li {
   /* Remove default list styling */
   list-style-type: none;
+  width: 360px;
 }
 
 #result-list li p {
@@ -273,17 +268,20 @@ input:focus {
   height: 30px;
   color: white;
   border: 0px;
+  text-align: center;
+  align-content: center;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   font-size: 1.2em;
   display: block;
+  padding-top: 4px;
   margin: auto;
   margin-top: 24px;
   background-color: var(--primary-color-dark);
 }
 
-.delete_button:active,
+.delete-button:active,
 .dropdown-selection-button:active,
 .add-button:active {
   transform: scale(0.98);
@@ -337,7 +335,8 @@ input:focus {
   margin-right: 10px;
 }
 
-.card-meal-options {
+.meal-options {
+  width: 250px;
   display: flex;
   align-items: center;
   margin-right: 10px;
@@ -371,7 +370,6 @@ input:focus {
   visibility: hidden;
 }
 
-
 /* food list section */
 
 .food-item {
@@ -383,6 +381,8 @@ input:focus {
   height: 140px;
   position: relative;
   display: flex;
+  margin-top: 48px;
+  margin-bottom: 12px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
@@ -410,7 +410,16 @@ input:focus {
   margin-bottom: 74px;
 }
 
-.delete_button {
+button {
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: auto;
+  display: block;
+}
+
+.delete-button {
   background-image: url('images/delete_icon.svg');
   background-position: right 50% bottom 50%;
   background-repeat: no-repeat;
@@ -422,4 +431,99 @@ input:focus {
   border-radius: 50%;
   margin-left: 140px;
   margin-bottom: 124px;
+}
+
+/* Bottom swiper section*/
+
+.bottom {
+  margin-left: 20px;
+  margin-right: 20px;
+  bottom: 0px;
+  width: 100%;
+  max-width: 1440px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: var (--primary-light-color);
+  border-radius: 20px 20px 0px 0px;
+  border: 6px solid white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.consumed-top-section {
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#consumed-label {
+  font-size: 1.2em;
+  margin-top: 12px;
+  margin-left: 22px;
+  display: inline-block;
+  font-family: 'Arima Madurai', sans-serif;
+  color: var(--text-color-dark);
+}
+
+#consumed-lunch-blue-dot,
+#consumed-dinner-blue-dot,
+#consumed-all-blue-dot {
+  visibility: hidden;
+}
+
+#consumed-meal-breakfast,
+#consumed-meal-lunch,
+#consumed-meal-dinner,
+#consumed-meal-all{
+  font-size: 1em;
+  color: var(--text-color-light);
+}
+
+.consumed-meal-options {
+  margin-left: 40px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+#consumed-meal-breakfast {
+  color: var(--text-color-dark);
+}
+
+.expand-consumed-button {
+  background-image: url('images/expand_arrow.svg');
+  width: 48px;
+  height: 48px;
+  margin-right: 0;
+  margin-right: 12px;
+  visibility: hidden;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear;
+}
+
+.collapse-consumed-button {
+  transform: rotate(180deg);
+  transition: transform 0.5s linear;
+  background-image: url('images/expand_arrow.svg');
+  width: 48px;
+  height: 48px;
+  margin-right: 0;
+  margin-right: 12px;
+}
+
+#swiper-wrapper {
+  display: flex;
+}
+
+/* graph section*/
+#donut-macro-graph {
+  width: 480px;
+  height: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: auto;
 }
