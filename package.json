@@ -1,7 +1,4 @@
 {
   "name": "daily-macros",
-  "main": "index.html",
-  "scripts": {
-    "start":"script.js"
-  }
+  "main": "index.php"
 }
