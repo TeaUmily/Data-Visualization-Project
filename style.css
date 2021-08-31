@@ -22,12 +22,12 @@ h1 {
 
 body {
   max-width: 1440px;
-  height: 1024px;
+  height: 900px;
   margin: auto;
 }
 
 .container {
-  width:100%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -35,14 +35,16 @@ body {
   justify-content: space-between;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--text-color-light);
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
 input:focus {
-      outline:none;
-    }
+  outline: none;
+}
 
 #search_and_card {
   float: right;
@@ -53,7 +55,8 @@ input:focus {
 #search-input {
   background-image: url('images/search.svg');
   background-position: 24px 16px;
-  background-repeat: no-repeat; /* Do not repeat the icon image */
+  background-repeat: no-repeat;
+  /* Do not repeat the icon image */
   height: 48px;
   width: 360px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
@@ -64,7 +67,7 @@ input:focus {
   font-size: 0.8em;
   padding: 12px 56px 12px 56px;
   margin-bottom: 12px;
-  background-color:white;
+  background-color: white;
 }
 
 #search_result {
@@ -107,7 +110,6 @@ input:focus {
 }
 
 /* Food card section */
-
 #food-card {
   visibility: hidden;
   background-color: var (--primary-light-color);
@@ -238,7 +240,8 @@ input:focus {
 .dropdown-selection-button {
   background-image: url('images/down_arrow.svg');
   background-position: right 5% bottom 50%;
-  background-repeat: no-repeat; /* Do not repeat the icon image */
+  background-repeat: no-repeat;
+  /* Do not repeat the icon image */
   height: 30px;
   width: 160px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
@@ -283,6 +286,8 @@ input:focus {
 
 .delete-button:active,
 .dropdown-selection-button:active,
+.card-macro-close-btn:active,
+.popup-done-button:active,
 .add-button:active {
   transform: scale(0.98);
   box-shadow: 3px 2px 16px 1px rgba(0, 0, 0, 0.24);
@@ -325,8 +330,8 @@ input:focus {
   text-decoration: none;
 }
 
-.portion-dropdown-item  :hover {
-    background-color: #F2F2F2;
+.portion-dropdown-item :hover {
+  background-color: #F2F2F2;
 }
 
 .blue-dot {
@@ -360,18 +365,15 @@ input:focus {
   cursor: pointer;
 }
 
-
 #lunch-blue-dot {
   visibility: hidden;
 }
-
 
 #dinner-blue-dot {
   visibility: hidden;
 }
 
 /* food list section */
-
 .food-item {
   background-color: var (--primary-light-color);
   border-radius: 7px 7px 7px 7px;
@@ -434,7 +436,6 @@ button {
 }
 
 /* Bottom swiper section*/
-
 .bottom {
   margin-left: 20px;
   margin-right: 20px;
@@ -453,7 +454,6 @@ button {
 
 .consumed-top-section {
   display: flex;
-
   justify-content: flex-start;
   align-items: center;
 }
@@ -476,7 +476,7 @@ button {
 #consumed-meal-breakfast,
 #consumed-meal-lunch,
 #consumed-meal-dinner,
-#consumed-meal-all{
+#consumed-meal-all {
   font-size: 1em;
   color: var(--text-color-light);
 }
@@ -521,9 +521,283 @@ button {
   width: 480px;
   height: 480px;
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
- -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   margin: auto;
+}
+
+.middleText {
+  fill: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 54px;
+}
+
+.middleTextLabel {
+  fill: var(--text-color-light);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+
+.macro-labels {
+  fill: var(--text-color-light);
+  font-family: 'Arima Madurai', sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.ratio-selector {
+  display: flex;
+  margin-top: 32px;
+  flex-direction: row;
+}
+
+.ratio-selector p {
+  color: var(--text-color-dark);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+.ratio-option {
+  margin-left: 16px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.ratio-macros {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.ratio-macros p {
+  color: var(--text-color-light);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+#ratio1-macros p {
+  color: var(--text-color-dark);
+}
+
+#ratio2-blue-dot,
+#ratio3-blue-dot {
+  visibility: hidden;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#calories-input {
+  width: 135px;
+  height: 38px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  border: 0px;
+  border-radius: 4px;
+  color: var(--text-color-dark);
+  font-size: 0.8em;
+  margin-left: 16px;
+  padding-left: 16px;
+  background-color: white;
+}
+
+.calories-intake-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* popup*/
+.calories-intake-label {
+  color: var(--text-color-dark);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+#calories-input-error {
+  color: red;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px 24px;
+}
+
+.popup-done-button {
+  width: 184px;
+  height: 30px;
+  color: white;
+  border: 0px;
+  text-align: center;
+  align-content: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  display: block;
+  padding-top: 4px;
+  margin: auto;
+  margin-top: 46px;
+  margin-bottom: 16px;
+  background-color: var(--primary-color-dark);
+}
+
+.input-info {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-info p {
+  color: var(--text-color-dark);
+  font-family: 'Roboto', sans-serif;
+  margin-top: 8px;
+  font-size: 1.2em;
+}
+
+.card-macro-details {
+  width: 420px;
+  height: 500px;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  background-color: var (--primary-light-color);
+  border-radius: 20px 20px 20px 20px;
+  border: 6px solid #F28482;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: none;
+}
+
+.card-details-title {
+  color: var(--text-color-dark);
+  margin-left: 24px;
+  margin-top: 16px;
+  font-family: 'Arima Madurai', sans-serif;
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+.card-macro-close-btn {
+  background-image: url('images/delete_icon.svg');
+  background-position: right 50% bottom 50%;
+  background-repeat: no-repeat;
+  width: 27px;
+  height: 27px;
+  background-color: white;
+  position: absolute;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  top: 2%;
+  right: 2%;
+}
+
+.macro-item-labels {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 8px;
+  margin-left: 24px;
+}
+
+.macro-item-name {
+  color: var(--text-color-dark);
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+}
+
+.macro-item-percentage {
+  color: var(--text-color-light);
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+
+.item-percentage {
+  width: 240px;
+  height: 10px;
+  margin-top: 4px;
+  margin-left: 24px;
+  background-color: var(--primary-color-dark);
+  border-radius: 5px;
 }
