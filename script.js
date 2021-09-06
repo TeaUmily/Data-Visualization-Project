@@ -165,9 +165,9 @@ const onAddItemClicked = (foodDetails) => {
     }
 
     var weight = selectedPortionGrams*portionNumber;
-    var proteinsWeight = portionNumber*selectedPortionGrams * foodDetails.food.nutrients.PROCNT / 100
-    var fatsWeight = selectedPortionGrams * foodDetails.food.nutrients.FAT / 100
-    var carbsWeight = selectedPortionGrams * foodDetails.food.nutrients.CHOCDF / 100
+    var proteinsWeight = weight*foodDetails.food.nutrients.PROCNT / 100
+    var fatsWeight = weight * foodDetails.food.nutrients.FAT / 100
+    var carbsWeight = weight * foodDetails.food.nutrients.CHOCDF / 100
     var foodItem = new FoodItem(id, name, imageUrl, weight, proteinsWeight, fatsWeight, carbsWeight, selectedMeal, totalCalories)
     consumedFoodList.push(foodItem)
     updateDonutGraph(foodItem, "add")
