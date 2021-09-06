@@ -539,6 +539,12 @@ button {
   font-size: 1.1em;
 }
 
+.middleTextLabelRed {
+  fill: red;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+
 .macro-labels {
   fill: var(--text-color-light);
   font-family: 'Arima Madurai', sans-serif;
@@ -650,7 +656,7 @@ input[type=number] {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 40%;
+  width: 60%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -736,7 +742,7 @@ input[type=number] {
 }
 
 .card-macro-details {
-  width: 420px;
+  width: 340px;
   height: 500px;
   position: absolute;
   top: 20%;
@@ -748,6 +754,7 @@ input[type=number] {
   overflow: hidden;
   display: none;
 }
+
 
 .card-details-title {
   color: var(--text-color-dark);

@@ -50,6 +50,10 @@ var proteinsLabel
 var carbsLabel
 var fatsLabel
 
+var fatsOver = false
+var carbsOver = false
+var proteinsOver = false
+
 var swiper = new Swiper('.swiper-container', {
   slidesPerView: 3,
   spaceBetween: 10,
@@ -160,8 +164,8 @@ const onAddItemClicked = (foodDetails) => {
       imageUrl = "-"
     }
 
-    var weight = selectedPortionGrams;
-    var proteinsWeight = selectedPortionGrams * foodDetails.food.nutrients.PROCNT / 100
+    var weight = selectedPortionGrams*portionNumber;
+    var proteinsWeight = portionNumber*selectedPortionGrams * foodDetails.food.nutrients.PROCNT / 100
     var fatsWeight = selectedPortionGrams * foodDetails.food.nutrients.FAT / 100
     var carbsWeight = selectedPortionGrams * foodDetails.food.nutrients.CHOCDF / 100
     var foodItem = new FoodItem(id, name, imageUrl, weight, proteinsWeight, fatsWeight, carbsWeight, selectedMeal, totalCalories)
@@ -207,9 +211,9 @@ function updateDonutGraph(foodItem, action) {
 
   var caloriesStatusElement = d3.select("#calorieStatusLabel")
   if (caloriesLeft < 0) {
-    caloriesStatusElement.text("kcal over")
+    caloriesStatusElement.attr('style', "fill:red").text("kcal over")
   } else {
-    caloriesStatusElement.text("kcal left")
+    caloriesStatusElement.attr('style', "fill:#969696").text("kcal left")
   }
 
   var middleCount = svg.selectAll(".middleText")
@@ -227,7 +231,9 @@ function updateDonutGraph(foodItem, action) {
     proteinsLabel = "Proteins-" + (proteinsIntake - proteinsWeightSumMax).toFixed(0) + "g over"
     proteinsLabelElement.text(proteinsLabel)
     proteinsLabelElement.style("fill", "red")
+    proteinsOver = true
   } else {
+    proteinsOver = false
     proteinsLabel = "Proteins-" + (proteinsWeightSumMax - proteinsIntake).toFixed(0) + "g left"
     proteinsLabelElement.text(proteinsLabel)
     proteinsLabelElement.style("fill", "#969696")
@@ -249,10 +255,12 @@ function updateDonutGraph(foodItem, action) {
     carbsLabel = "Carbs -" + (carbsIntake - carbsWeightSumMax).toFixed(0) + "g over"
     carbsLabelElement.text(carbsLabel)
     carbsLabelElement.style("fill", "red")
+    carbsOver = true
   } else {
     carbsLabel = "Carbs-" + (carbsWeightSumMax - carbsIntake).toFixed(0) + "g left"
     carbsLabelElement.style("fill", "#969696")
     carbsLabelElement.text(carbsLabel)
+    carbsOver = false
     if (carbsIntake == 0) {
       cRatio = 0
     } else {
@@ -273,7 +281,9 @@ function updateDonutGraph(foodItem, action) {
     fatsLabel = "Fats -" + (fatIntake - fatWeightSumMax).toFixed(0) + "g over"
     fatsLabelElement.text(fatsLabel)
     fatsLabelElement.style("fill", "red")
+    fatsOver = true
   } else {
+    fatsOver = false
     fatsLabel = "Fats-" + (fatWeightSumMax - fatIntake).toFixed(0) + "g left"
     fatsLabelElement.text(fatsLabel)
     fatsLabelElement.style("fill", "#969696")
@@ -676,6 +686,10 @@ const onPopupDoneClick = () => {
       ratioLabel.textContent = "Ratio:  " + "15% Carbs, 25% Proteins, 60% Fats"
     }
 
+     proteinsWeightSumMax = calories * selectedProteinPercentage / 4
+     carbsWeightSumMax = calories * selectedCarbsPercentage / 4
+    fatWeightSumMax = calories * selectedFatPercentage / 9
+
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
     initializeChart()
@@ -860,6 +874,7 @@ function updateMacroDetailsCard(macroName) {
   if (macroName != "") {
     var rotationAngle
     var macroCard = document.getElementById('card-macro-details')
+    var cardTitle = document.getElementById('card-details-title')
     var borderColor
 
     var dataList = []
@@ -877,7 +892,12 @@ function updateMacroDetailsCard(macroName) {
           dataList.push(foodMacroItem)
         }
       }
-      document.getElementById('card-details-title').textContent = proteinsLabel
+      cardTitle.textContent = proteinsLabel
+      if(proteinsOver) {
+        cardTitle.setAttribute("style", "color:red")
+      } else {
+        cardTitle.setAttribute("style", "color: #404040")
+      }
 
     } else if (macroName == "Carbs") {
       borderColor = "#F6BD60"
@@ -892,7 +912,12 @@ function updateMacroDetailsCard(macroName) {
           dataList.push(foodMacroItem)
         }
       }
-      document.getElementById('card-details-title').textContent = carbsLabel
+      cardTitle.textContent = carbsLabel
+      if(carbsOver) {
+        cardTitle.setAttribute("style", "color:red")
+      } else {
+        cardTitle.setAttribute("style", "color: #404040")
+      }
     } else if (macroName == "Fats") {
       borderColor = "#84A59D"
       var i
@@ -907,31 +932,34 @@ function updateMacroDetailsCard(macroName) {
           dataList.push(foodMacroItem)
         }
       }
-      document.getElementById('card-details-title').textContent = fatsLabel
+      cardTitle.textContent = fatsLabel
+      if(fatsOver) {
+        cardTitle.setAttribute("style", "color:red")
+      } else {
+        cardTitle.setAttribute("style", "color: #404040")
+      }
     }
 
     group
       .transition()
-      .duration(2000)
+      .duration(1000)
       .attr("transform", 'translate(120, 120) rotate(' + rotationAngle + ')')
 
     macroCard.style.borderColor = borderColor
 
     var macroDetailsList = document.getElementById('macros')
     macroDetailsList.innerHTML = ""
-    console.log("datalist:" + dataList);
     dataList.sort((a, b) => {
       return b._percentage - a._percentage;
     });
 
     for (i = 0; i < dataList.length; i++) {
-      console.log("listaa:" + dataList[i]);
       var li = document.createElement('li')
       li.innerHTML = `<div class="macro-item-labels">
       <p class="macro-item-name">${dataList[i]._name}</p>
       <p class="macro-item-percentage">${(dataList[i]._percentage*100).toFixed(1)}%</p>
     </div>
-    <div class="item-percentage" style="width:${dataList[i]._percentage*240}px"></div>`
+    <div class="item-percentage" style="width:${dataList[i]._percentage*220}px"></div>`
       li.setAttribute('id', 'macro-list-item')
       macroDetailsList.appendChild(li)
     }
